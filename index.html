@@ -75,10 +75,7 @@
     <script>
         for(let i=1;i<16;i++){
             var img_x = document.createElement("img");
-            img_x.src = "./latent_composition/"+i+".png";
-            img_x.onerror = function(){
-                img.src = "./latent_composition/"+i+".PNG";
-            }
+            img_x.src = "./latent_composition/"+i+".PNG";
             img_x.height=550;
             img_x.width=775;
             document.getElementById("composition").appendChild(img_x);
