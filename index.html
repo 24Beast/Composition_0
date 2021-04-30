@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baseline Results</title>
+</head>
+<body>
+    <link rel="stylesheet" href="style.css">
+    <div id="Inpaint" style="text-align: center;">
+        <h1>Inpainting Results</h1><br>
+        <h2>Original &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; DeepFill &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Priors</h2>
+    </div>
+    <script>
+        for(let i = 0;i<19;i++){
+            var img2 = document.createElement("img");
+            img2.src = "./orig/orig_"+i+".png";
+            img2.height=256;
+            img2.width=256;
+            document.getElementById("Inpaint").appendChild(img2);
+            var img = document.createElement("img");
+            img.src = "./deepfill/"+i+".png";
+            img.height=256;
+            img.width=256;
+            document.getElementById("Inpaint").appendChild(img);
+            var img1 = document.createElement("img");
+            img1.src = "./priors/"+i+".png";
+            img1.height=256;
+            img1.width=256;
+            document.getElementById("Inpaint").appendChild(img1);
+            var b = document.createElement("hr");
+            document.getElementById("Inpaint").appendChild(b);
+        }
+        console.log("Inpaint");
+    </script>
+    <hr color="blue">
+    <div id="latent" style="text-align: center;">
+        <h1>Latent Results</h1><br>
+        <h2>Original &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Mask &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; 
+            pix2latent &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; SINGAN</h2>
+    </div>
+    <script>
+        var f_names = ['ng_0', 'ng_1', 'ng_2', 'ng_3', 'ng_4', 'ng_5', 'ng_6', 'ng_7', 'ng_8', 'ng_9', 'ng_10', 'ng_11', 'ng_12'];
+        for(var [i,file] of f_names.entries()){
+            var img = document.createElement("img");
+            img.src = "./latent/"+file+"/mask.jpg";
+            img.height=256;
+            img.width=256;
+            document.getElementById("latent").appendChild(img);
+            var img1 = document.createElement("img");
+            img1.src = "./latent/"+file+"/target.jpg";
+            img1.height=256;
+            img1.width=256;
+            document.getElementById("latent").appendChild(img1);
+            var img2 = document.createElement("img");
+            img2.src = "./latent/"+file+"/out.jpg";
+            img2.height=256;
+            img2.width=256;
+            document.getElementById("latent").appendChild(img2);
+            var img3 = document.createElement("img");
+            img3.src = "./SINGAN/RandomSamples/"+i+"/gen_start_scale=0/5.png";
+            img3.height=256;
+            img3.width=256;
+            document.getElementById("latent").appendChild(img3);
+            var b = document.createElement("hr");
+            document.getElementById("latent").appendChild(b);
+        }
+        console.log("Latent");
+    </script>
+    <hr color="blue">
+    <div id="composition" style="text-align: center;">
+        <h1>Latent Composition Results</h1><br>
+    </div>
+    <script>
+        for(let i=0;i<16;i++){
+            var img = document.createElement("img");
+            img.src = "./latent_composition/"+i+".png";
+            img.onerror = function(){
+                img.src = "./"+i+".PNG";
+            }
+            img.height=550;
+            img.width=775;
+            document.getElementById("composition").appendChild(img);
+            var b = document.createElement("hr");
+            document.getElementById("composition").appendChild(b);
+        }
+        console.log("Composition");
+    </script>
+</body>
+</html>
