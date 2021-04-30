@@ -75,9 +75,9 @@
     <script>
         for(let i=0;i<16;i++){
             var img = document.createElement("img");
-            img.src = "./latent_composition/"+i+".png";
+            img.src = "./latent_composition/"+i+".PNG";
             img.onerror = function(){
-                img.src = "./latent_composition/"+i+".PNG";
+                img.src = "./latent_composition/"+i+".png";
             }
             img.height=550;
             img.width=775;
